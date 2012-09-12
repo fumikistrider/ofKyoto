@@ -17,7 +17,7 @@ public:
     Ball();
     
     // Methods
-    void moveTo(int,int);
+    void moveTo();
     void draw();
     
     // Properties

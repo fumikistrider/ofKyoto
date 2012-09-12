@@ -19,5 +19,6 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        Ball theBall;
+        float xPos;
+        float yPos;
 };

@@ -3,30 +3,34 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
-    // Smooth edges
+    // 輪郭をスムーズに（アンチエイリアス）
     ofEnableSmoothing();
     
-    // Fixed framerate
+    // フレームレートを固定
     ofSetFrameRate(30);
 
+    // 最初のボールのX座標
+    xPos = ofGetWindowWidth()*0.5;
+    
+    // 最初のボールのY座標
+    yPos = ofGetWindowHeight()*0.5;
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 
-    theBall.x += ( mouseX - theBall.x )*0.1;
-    theBall.y += ( mouseY - theBall.y )*0.1;
-
+    xPos += ( mouseX - xPos )*0.1;
+    yPos += ( mouseY - yPos )*0.1;
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
-    ofBackgroundGradient(ofColor::gray,ofColor(30,10,30), OF_GRADIENT_CIRCULAR);
+    ofBackgroundGradient(ofColor::white,ofColor::yellow, OF_GRADIENT_CIRCULAR);
     
-    // Now we have a method that does the drawing stuff
-    theBall.draw();
-
+    ofSetColor(200,200,124);
+    ofFill();
+    ofCircle( xPos, yPos, 30);
 }
 
 //--------------------------------------------------------------
