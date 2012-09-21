@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Ball.h"
+#include "Particle.h"
 
 class testApp : public ofBaseApp{
 	public:
@@ -21,4 +22,8 @@ class testApp : public ofBaseApp{
     
         float xPos;
         float yPos;
+    
+    Particle** particles;
+    
+    int pNum;
 };

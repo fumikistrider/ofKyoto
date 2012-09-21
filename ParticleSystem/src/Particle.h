@@ -9,6 +9,22 @@
 #ifndef __particlesystem__Particle__
 #define __particlesystem__Particle__
 
-#include <iostream>
+#include "ofMain.h"
 
+class Particle{
+public:
+    Particle();
+    Particle(float,float,int);
+    
+    void update();
+    void draw();
+    
+    float x;
+    float y;
+    float speedX;
+    float speedY;
+    int dim;
+    ofColor color;
+    
+};
 #endif /* defined(__particlesystem__Particle__) */
