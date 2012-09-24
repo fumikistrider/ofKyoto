@@ -9,6 +9,8 @@ void testApp::setup(){
     // フレームレートを固定
     ofSetFrameRate(60);
     
+    ofSetVerticalSync(true);
+    
     // Ballインスタンスを生成
     ball = new Ball();
     
