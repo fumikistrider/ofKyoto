@@ -3,18 +3,18 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
-    // 輪郭をスムーズに（アンチエイリアス）
-    ofEnableSmoothing();
-    
     // フレームレートを固定
     ofSetFrameRate(60);
-    
+
+    // 垂直同期
     ofSetVerticalSync(true);
-    
+
+    // 輪郭をスムーズに（アンチエイリアス）
+    ofEnableSmoothing();
+        
     // Ballインスタンスを生成
     ball = new Ball();
     
-
 }
 
 //--------------------------------------------------------------
@@ -22,13 +22,13 @@ void testApp::update(){
     
     // ボールの位置を更新
     ball->moveTo(mouseX, mouseY);
-    
+
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
-    ofBackgroundGradient(ofColor::white,ofColor::gray, OF_GRADIENT_CIRCULAR);
+    ofBackgroundGradient(ofColor::white, ofColor::gray, OF_GRADIENT_CIRCULAR);
 
     ball->draw();
     
