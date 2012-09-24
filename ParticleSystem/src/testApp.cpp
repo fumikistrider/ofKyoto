@@ -61,9 +61,6 @@ void testApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
 
-    for (int i = 0; i < pNum; i++) {
-        particles[i]->reset(mouseX, mouseY);
-    }
 }
 
 //--------------------------------------------------------------
