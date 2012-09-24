@@ -13,17 +13,19 @@
 
 class Ball {
 public:
-    // Constructor
+    // コンストラクタ
     Ball();
     
-    // Methods
-    void moveTo();
+    // メソッド
+    void moveTo(float, float);
     void draw();
     
-    // Properties
-    int x;
-    int y;
+    // プロパティ
+    float x;
+    float y;
     ofColor color;
+    
+    
 };
 
 #endif /* defined(__particlesystem__Ball__) */

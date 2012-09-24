@@ -20,10 +20,9 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        float xPos;
-        float yPos;
+     Ball* ball;    
     
-    Particle** particles;
+     vector<Particle*> particles;
     
-    int pNum;
+     int pNum;
 };

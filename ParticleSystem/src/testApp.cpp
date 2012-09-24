@@ -8,46 +8,30 @@ void testApp::setup(){
     
     // フレームレートを固定
     ofSetFrameRate(60);
-
-    // 最初のボールのX座標
-    xPos = ofGetWindowWidth()*0.5;
     
-    // 最初のボールのY座標
-    yPos = ofGetWindowHeight()*0.5;
-
-    pNum = 150;
-    particles = new Particle*[pNum];
-    for (int i = 0; i < pNum; i++) {        
-        particles[i] = new Particle(ofRandom(300,400), ofRandom(200,300), ofRandom(10,40));
-    }
-
+    // Ballインスタンスを生成
+    ball = new Ball();
+    
 
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-
-    xPos += ( mouseX - xPos )*0.1;
-    yPos += ( mouseY - yPos )*0.1;
     
-    for (int i = 0; i < pNum; i++) {
-        particles[i]->update();
-    }
+    // ボールの位置を更新
+    ball->moveTo(mouseX, mouseY);
+    
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 
     ofBackgroundGradient(ofColor::white,ofColor::gray, OF_GRADIENT_CIRCULAR);
+
+    ball->draw();
     
-    ofSetHexColor(0xFFF20D);
-    ofFill();
-    ofCircle( xPos, yPos, 30);
-    
-    for (int i = 0; i < pNum; i++) {
-        particles[i]->draw();
-    }
 }
+
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
@@ -77,6 +61,9 @@ void testApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
 
+    for (int i = 0; i < pNum; i++) {
+        particles[i]->reset(mouseX, mouseY);
+    }
 }
 
 //--------------------------------------------------------------

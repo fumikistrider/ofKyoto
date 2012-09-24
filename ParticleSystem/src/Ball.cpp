@@ -1,25 +1,21 @@
-//
-//  Ball.cpp
-//  particlesystem
-//
-//  Created by Yoshioka Fumiki on 12/09/10.
-//
-//
-
 #include "Ball.h"
-
 Ball::Ball(){
-    // Set the initial color
-    color.set( ofRandom(0,255), ofRandom(0,255), ofRandom(0,255));
+
+    // 色
+    color.set(ofRandom(255),ofRandom(255),ofRandom(255));
     
-    // Initial x position of the ball
-    x = ofRandom( ofGetWindowWidth() );
+    // ボールのX座標
+    x = ofRandom(ofGetWindowWidth());
     
-    // Initial y position of the ball
-    y = ofRandom( ofGetWindowHeight() );
+    // ボールのY座標
+    y = ofRandom(ofGetWindowHeight());
+
 }
 
-void Ball::moveTo(){
+void Ball::moveTo(float targetX, float targetY){
+    // 徐々に近づいていく
+    x += ( targetX - x )*0.1;
+    y += ( targetY - y )*0.1;
 }
 
 void Ball::draw(){
@@ -27,3 +23,4 @@ void Ball::draw(){
     ofFill();
     ofCircle( x, y, 30);
 }
+

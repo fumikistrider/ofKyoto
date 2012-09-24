@@ -23,6 +23,7 @@ Particle::Particle(float _x, float _y, int _dim) {
     dim = _dim;
     speedX = ofRandom(-10, 10);
     speedY = ofRandom(-10, 10);
+    life = ofRandom(30,60);
 
     int col = ofRandom(5);
     switch (col) {
@@ -49,22 +50,27 @@ Particle::Particle(float _x, float _y, int _dim) {
 
 void Particle::update()
 {
-    if(x < 0 ){
-        x = 0;
-        speedX *= -1;
-    } else if(x > ofGetWidth()){
-        x = ofGetWidth();
-        speedX *= -1;
+    
+    if( life > 0){
+        if(x < 0 ){
+            x = 0;
+            speedX *= -1;
+        } else if(x > ofGetWidth()){
+            x = ofGetWidth();
+            speedX *= -1;
+        }
+        if(y < 0 ){
+            y = 0;
+            speedY *= -1;
+        } else if(y > ofGetHeight()){
+            y = ofGetHeight();
+            speedY *= -1;
+        } 
+        x+=speedX;
+        y+=speedY;
+        
+        life--;
     }
-    if(y < 0 ){
-        y = 0;
-        speedY *= -1;
-    } else if(y > ofGetHeight()){
-        y = ofGetHeight();
-        speedY *= -1;
-    } 
-    x+=speedX;
-    y+=speedY;
 }
 
 void Particle::draw()
@@ -72,9 +78,19 @@ void Particle::draw()
     for(int i = dim; i > 0; i--){
         //ofSetColor(color);
         ofEnableAlphaBlending();
-        ofSetColor(color,24);
+        ofSetColor(color,life);
         ofCircle(x, y, dim - i);
         ofDisableAlphaBlending();
     }
 
+}
+
+void Particle::reset(int mouseX, int mouseY)
+{
+    x = ofRandom(mouseX - 30, mouseX + 30);
+    y = ofRandom(mouseY - 30, mouseY + 30);
+    speedX = ofRandom(-10, 10);
+    speedY = ofRandom(-10, 10);
+    life = ofRandom(30,60);
+    
 }
